@@ -1,8 +1,6 @@
-const FULL_API = 'http://data.fixer.io/api/latest?access_key=88ef31c87c9e8ff361a19b9793ca01c6';
-const API_LINK_CONVERSION = 'http://data.fixer.io/api/latest?access_key=';
-const API_LINK_DROPDOWN = 'http://data.fixer.io/api/symbols?access_key=';
-const API_KEY = '88ef31c87c9e8ff361a19b9793ca01c6';
-
+const Api_Link_Conversion = `${API_LINK_CONVERSION}`;
+const Api_Link_Dropdown = `${API_LINK_DROPDOWN}`;
+const Api_Key = `${API_KEY}`;
 
 const selectors = {
   from: 'currFrom',
@@ -66,14 +64,14 @@ async function convertCurrencies() {
 async function fetchCurrencies(from, to) {
   output.innerText = "loading";
   const curr = await fetch(
-    `${API_LINK_CONVERSION}${API_KEY}&symbols=${from},${to}`
+    `${Api_Link_Conversion}${Api_Key}&symbols=${from},${to}`
   );
   const { rates } = await curr.json();
   return rates;
 }
 
 async function fetchSymbols() {
-  const curr = await fetch(`${API_LINK_DROPDOWN}${API_KEY}`);
+  const curr = await fetch(`${Api_Link_Dropdown}${Api_Key}`);
   const { symbols } = await curr.json();
   console.log(symbols);
   return symbols;
